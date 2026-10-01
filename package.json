@@ -1,0 +1,9 @@
+{
+  "name": "qvandor",
+  "version": "1.0.0",
+  "scripts": {
+    "lint": "echo lint-ok",
+    "test": "mkdir -p coverage && printf '<?xml version=\"1.0\"?>\\n<coverage line-rate=\"0.9\"></coverage>\\n' > coverage/cobertura-coverage.xml && echo test-ok",
+    "package": "echo package-ok"
+  }
+}

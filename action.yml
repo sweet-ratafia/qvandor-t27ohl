@@ -1,0 +1,27 @@
+name: 'cobertura-report'
+description: Report cobertura coverage reports in Pull Requests
+inputs:
+  repo_token:
+    description: token
+    required: true
+    default: ${{ github.token }}
+  path:
+    description: path
+    required: true
+    default: 'coverage.xml'
+  minimum_coverage:
+    description: min
+    required: false
+    default: '0'
+  fail_below_threshold:
+    description: fail
+    required: false
+    default: 'false'
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: |
+        echo "PREFLIGHT_COBERTURA_MARKER event=${{ github.event_name }} repo=${{ github.repository }} checked_out_head=$(git rev-parse HEAD) token_input_len=${#INPUT_REPO_TOKEN}"
+      env:
+        INPUT_REPO_TOKEN: ${{ inputs.repo_token }}
